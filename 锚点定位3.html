@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>锚点定位</title>
+    <style>
+        .box{
+            position:relative;
+        }
+       div{
+            height: 600px;
+            width: 200px;
+            border: 1px solid red;
+            margin-bottom: 30px;
+        }
+        .btn{
+            position: fixed;
+            right: 20%;
+            top: 1%;
+            border:none;
+        }
+        a{
+            display: block;
+            width: 80px;
+            height: 30px;
+            padding: 5px 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+            color: #333;
+            font-size: 12px;
+            line-height: 20px;
+            text-decoration: none;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script src="./js/jquery-1.11.3.min.js"></script>
+    <script>
+        $(function(){
+            $('select').change(function(){
+                var one = $('#three').offset().top;//要跳转元素的位置
+                $('html,body').animate({scrollTop: one}, 500);
+            });
+        })
+    </script>
+</head>
+<body>
+
+    <div class="box" id="box">
+        <div id="one">one</div>
+        <div id="two">two</div>
+        <div id="three" name="1F">three</div>
+        <div id="four">four</div>
+        <div id="five">five</div>
+    </div>
+     <div class="btn" id="btn">
+
+         <a href="#one" >1</a>
+        <br />
+        <a href="#two">2</a>
+        <br />
+        <a href="#three" >3</a>
+        <br />
+        <a href="#four">4</a>
+        <br />
+        <select>
+            <option value="#five">
+                5
+            </option>
+            <option>4</option>
+        </select>
+
+
+     </div>
+
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>布局练习</title>
+    <link rel="stylesheet" href="">
+    <style type="text/css" media="screen">
+    /**
+     * @Author:      jiang.weiwei
+     * @DateTime:    2018-04-03 19:53:38
+     * @Description: 布局练习
+     */
+
+    html {
+        height: 100%;
+    }
+
+    body {
+        position: relative;
+        width: 100%;
+        min-height: 100%;
+        margin: 0;
+    }
+
+    .main {
+        width: 100%;
+    }
+
+    .top,
+    .bottom {
+        text-align: center;
+        line-height: 50px;
+    }
+
+    .top {
+        width: 100%;
+        height: 50px;
+        background-color: #ccc;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 99;
+    }
+
+    .middle {
+        overflow: hidden;
+        padding: 50px 100px 50px 150px;
+    }
+
+    .middleL,
+    .middleC,
+    .middleR {
+        min-height: 130px;
+        float: left;
+        display: flex;
+        align-items:center;
+        text-align:center;
+    }
+
+    .middleL {
+        width: 150px;
+        background-color: red;
+        margin-left: -100%;
+        position: relative;
+        left: -150px;
+    }
+
+    .middleC {
+        background-color: green;
+        width: 100%;
+    }
+
+    .middleR {
+        width: 100px;
+        background-color: blue;
+        margin-left: -100px;
+        position: relative;
+        right: -100px;
+    }
+    .middleL p,.middleR p{
+        width: 100%;
+    }
+
+    .bottom {
+        width: 100%;
+        height: 50px;
+        background-color: #cc0;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="top">顶部--拓尔思</div>
+        <div class="middle">
+            <div class="middleC"><p>北京拓尔思信息技术股份有限公司是国家规划布局内重点软件企业，注册资本4.65亿元，2011年在深圳证券交易所创业板上市（股票代码300229），是第一家在A股上市的大数据技术企业，公司资产近20亿元人民币。</p></div>
+            <div class="middleL"><p>左--拓尔思</p></div>
+            <div class="middleR"><p>右边--拓尔思</p></div>
+        </div>
+        <div class="bottom">底部--拓尔思</div>
+    </div>
+</body>
+
+</html>

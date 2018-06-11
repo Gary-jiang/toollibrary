@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <!-- <meta name="apple-mobile-web-app-capable" content="yes" /> -->
+    <!-- <meta name="apple-mobile-web-app-status-bar-style" content="black" /> -->
+    <title>Document</title>
+    <script src="./js/jquery-1.11.3.min.js"></script>
+    <!-- <link media ="screen and(min-width:768px)" href="./css/one.css" rel="stylesheet"  /> -->
+    <!-- <link media="screen and (min-width:768px)" href="./css/one.css" type="text/css" rel="stylesheet"/>  -->
+    <!-- <link media="screen and (max-width:767px)" href="./css/two.css" type="text/css" rel="stylesheet"/>  -->
+    <!-- <link media ="screen and(max-width:767px)" href="./css/two.css" rel="stylesheet"  /> -->
+    <style>
+    div {
+        width: 40%;
+        height: 300px;
+        background-color: blue;
+        margin: 0 auto;
+    }
+    </style>
+    <script type="text/javascript">
+    var MyModules = (function Manager() {
+        var modules = {};
+
+        function define(name, deps, impl) {
+            for (var i = 0; i < deps.length; i++) {
+                deps[i] = modules[deps[i]];
+            }
+            modules[name] = impl.apply(impl, deps);
+        }
+
+        function get(name) {
+            return modules[name];
+        }
+
+        return {
+            define: define,
+            get: get
+        };
+    })();
+
+
+    MyModules.define("bar", [], function() {
+        function hello(who) {
+            return "Let me introduce: " + who;
+        }
+        return {
+            hello: hello
+        };
+    });
+    MyModules.define("foo", ["bar"], function(bar) {
+        var hungry = "hippo";
+
+        function awesome() {
+            console.log(bar.hello(hungry).toUpperCase());
+        }
+        return {
+            awesome: awesome
+        };
+    });
+    var bar = MyModules.get("bar");
+    var foo = MyModules.get("foo");
+    console.log(
+        bar.hello("hippo")
+    ); // Let me introduce: hippo
+    foo.awesome(); // LET ME INTRODUCE: HIPPO
+    </script>
+</head>
+
+<body>
+    <div id="my_button">one</div>
+</body>
+
+</html>

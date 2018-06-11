@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+
+    </style>
+    <style>
+    .box {
+        width: 200px;
+        height: 200px;
+        background: red;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    #chinaMap{
+        width:100%;
+        height:500px;
+    }
+    </style>
+    <script src="js/jquery.min.js"></script>
+    <!-- <script src="js/layerui.js"></script> -->
+    <!-- <script src="js/laypage.js"></script> -->
+    <script>
+        function type(target){
+            var template = {
+                "[object Number]":"Number object",
+                "[object Boolean]":"boolean object",
+                "[object Array]":"Array",
+                "[object string]":"string object",
+                "[object object]":"object"
+            }
+
+            if(target === null){
+                return null;
+            }
+            if(typeof(target) == 'object'){
+                var str = Object.prototype.toString.call(target);
+                return template[str];
+            }else{
+                return typeof(target);
+            }
+        }
+    </script>
+</head>
+
+<body>
+<div id="chinaMap"></div>
+    <div class="box">
+        <h2>title</h2>
+        <p>
+            内容与内人嗯嗯嗯嗯嗯嗯嗯嗯的发的罚款的骄傲了肯德基阿肯
+        </p>
+    </div>
+</body>
+
+</html>

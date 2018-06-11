@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+
+    </style>
+    <style>
+    [type="submit"] {
+        position: absolute;
+        clip: rect(0 0 0 0);
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 2px 12px;
+        background-color: #cd0000;
+        color: #fff;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    :focus + label.btn {
+        outline: 1px dotted Highlight;
+        outline: 5px auto -webkit-focus-ring-color;
+    }
+    </style>
+    <script src="js/jquery.min.js" name="one"></script>
+</head>
+
+<body>
+    <!-- <div class="one" id="box"></div> -->
+    <input id="t" type="submit">
+    <label class="btn" for="t">提交</label>
+</body>
+
+</html>

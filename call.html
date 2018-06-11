@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script src="./js/jquery-1.11.3.min.js"></script>
+    <script>
+    function Animal() {
+        this.name = "Animal";
+        this.showName = function() {
+            alert(this.name);
+        }
+    }
+
+    function Cat() {
+        this.name = "Cat";
+    }
+    var animal = new Animal();
+    var cat = new Cat();
+
+        animal.showName.call(cat,","); 
+        animal.showName.apply(cat,[]);
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

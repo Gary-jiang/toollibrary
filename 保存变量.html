@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+
+    </style>
+    <style>
+
+    </style>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        param = {
+            sseQueryURL: "http://10.10.10.28:9080/sseQuery/",
+
+            selectVal: $("select").find('option:selected').prop('value'),
+            hrefVal: '',
+            dataSearch: {
+                search: "lmmzs",
+                searchword: ''
+            },
+            strOne: '1',
+            strTwo: '',
+            strThree: '',
+            strFour: '',
+            storageGlobalData: null
+        },
+        datainit=  function() {
+            var _this = this;
+            param.storageGlobalData =param.strOne;
+            param.storageGlobalData +=12121;
+            console.log(param.strOne);
+            console.log(param.storageGlobalData)
+        }
+        datainit();
+    </script>
+    <style type="text/css">
+    body {
+        --foo: #7F583F;
+        --bar: #F7EFD2;
+    }
+
+    :root {
+        --main-color: #4d4e53;
+        --main-bg: rgb(255, 255, 255);
+        --logo-border-color: rebeccapurple;
+        --header-height: 68px;
+        --content-padding: 10px 20px;
+        --base-line-height: 1.428571429;
+        --transition-duration: .35s;
+        --external-link: "external link";
+        --margin-top: calc(2vh + 20px);
+        --hellow: 'hellow';
+        --gap: 200px;
+    }
+
+    div {
+        background: var(--hellow)'jack';
+        height: var(--gap);
+    }
+
+    body:after {
+        content: '--screen-category : 'var(--hellow);
+    }
+    </style>
+</head>
+
+<body>
+    <div class="hotWrod">热词推荐: <span><a>监管关注</a></span> <span><a>分红</a></span> <span><a>年报</a></span> <span><a>一季报</a></span> <span><a>首次公开发行</a></span></div>
+</body>
+
+</html>

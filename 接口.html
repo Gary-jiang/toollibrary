@@ -1,0 +1,63 @@
+< !DOCTYPE html >
+    < html lang = "en" >
+
+    < head >
+    < meta charset = "UTF-8" / >
+    < title > Document < /title> < meta name = "viewport"
+content = "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" / >
+    < style >
+
+    < /style> < style >
+
+    < /style> < script src = "js/jquery.min.js"
+name = "one" > < /script> < script >
+    $(function() {
+        var sseQueryURL = "http://10.10.10.28:9080/sseQuery/";
+        var parentCodeArr = [];
+
+        function getParentCode(id) {
+            var PARENTCODE = SSE_MENU_28[id]['PARENTCODE'];
+            if (PARENTCODE != 0 && PARENTCODE != 8301) {
+                parentCodeArr.push(PARENTCODE);
+                getParentCode(PARENTCODE);
+            } else {
+                parentCodeArr.push(PARENTCODE);
+            }
+
+        }
+
+        function ajaxSearch() {
+            jQuery.ajax({
+                url: sseQueryURL + "search/getCountSearchResult.do?search=lmmzs",
+                type: "POST",
+                dataType: "jsonp",
+                jsonp: "jsonCallBack",
+                data: {
+                    "searchword": 1
+                },
+                cache: false,
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                success: function(json) {
+                    console.log(json);
+
+                    // var id = 1;
+                    // getParentCode(id);
+
+                    // parentCodeArr;
+
+                    // parentCodeArr = [];
+                }
+            })
+        };
+
+        ajaxSearch();
+
+    }); < /script>
+}
+} < /head>
+
+< body >
+    < div class = "one"
+id = "box" > < /div> < /body>
+
+< /html>

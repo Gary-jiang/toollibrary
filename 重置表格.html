@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <metaname="screen-orientation" content="portrait">
+        <metaname="x5-orientation" content="portrait">
+            <style>
+            #box{
+                font-size: 40px;
+            }
+            </style>
+           
+            <script src="js/jquery.min.js" name="one"></script>
+            <script>
+               $(function(){
+                    var arr = [1,2,3,4,5,6,7,8];
+                    var newArr = [];
+                    for(var i=0;i<arr.length;i++){
+                        newArr.push('<div>'+arr[i]+'</div>');
+                    }
+                    // console.log(newArr.join(' '));
+                    var htmlIn = newArr.join(' ');
+                    var newHtml = [];
+                    // '<!-- 手机端Swiper --><div class="swiper-container companyShow"><div class="swiper-wrapper"><div class="swiper-slide"><img alt="" src="'+srcArr[0]+'"></div><div class="swiper-slide"><img alt="" src="'+srcArr[1]+'"></div><div class="swiper-slide"><img alt="" src="'+srcArr[2]+'"></div><div class="swiper-slide"><img alt="" src="'+srcArr[3]+'"></div><div class="swiper-slide"><img alt="" src="'+srcArr[4]+'"></div></div><!-- Pagination --><div class="swiper-pagination"></div><!-- Arrows --><div class="swiper-button-next" style="display: none;"></div><div class="swiper-button-prev" style="display: none;"></div></div><!-- END -->'
+                    newHtml.push(
+                        '<!-- 手机端Swiper --><div class="swiper-container companyShow"><div class="swiper-wrapper">'+htmlIn+'<div class="swiper-button-next" style="display: none;"></div><div class="swiper-button-prev" style="display: none;"></div></div><!-- END -->'
+                    )
+
+                    $('#box').html(htmlIn);
+               })
+            </script>
+</head>
+
+<body>
+    <div class="one" id="box">
+        你好奥好哦好好好的哦啊好
+    </div>
+</body>
+
+</html>

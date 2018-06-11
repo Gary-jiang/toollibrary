@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+
+    </style>
+    <style>
+
+    </style>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(function(){
+            /*原型 继承*/
+            // function inherit(Target, Origin) {
+            //     /*继承 源数据的属性*/
+            //     function F() { };
+            //     F.prototype = Origin.prototype;
+            //     Target.prototype = new F();
+            //     /*原型指向 自身*/
+            //     Target.prototype.constuctor = Target;
+            //     /*保存继承的对象*/
+            //     Target.prototype.uber = Origin.prototype;
+            // }
+            // Father.prototype.lastName = "Deng";
+            // function Father() { }
+            // function Son() { }
+            // inherit(Son, Father);
+
+            // var son = new Son();
+            // Son.prototype.firstName = 'HeHe'
+            // var father = new Father();
+            function Deng(name,wife){
+                var prepareWife = 'xiaozhang';
+
+                this.name = name;
+                this.wift = wife;
+
+                this.changeWift = function(target){
+                    console/log(prepareWife);
+                    prepareWife = target;
+                }
+
+            }
+
+            var deng = new Deng('deng','xiaoliu');
+
+        })
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+        .one{
+            background: red;
+            width:200px;
+            height: 200px;  
+        }
+    </style>
+   
+    <script src="js/jquery.min.js" name="one"></script>
+    <script>
+    $(function(){
+        var aArry =[{one:1,two:2},{one:11,two:22}];
+        var newArry = [];
+        for(var i=0;i<aArry.length;i++){
+            newArry.push(aArry[i].one);
+        }
+
+        console.log(newArry);
+
+
+
+
+
+
+        
+        // var $ulL = $('ul li').eq(1);
+        // $('li').not($ulL).addClass('one');
+    })
+    </script>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li class="box">2</li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+
+</html>

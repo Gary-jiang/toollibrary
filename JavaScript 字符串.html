@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+   
+    </style>
+    <style>
+
+    </style>
+    <script src="js/jquery.min.js" name="one"></script>
+    <script>
+        // substring\slice\substr
+        let str = 'www.jeffjade.com'
+        console.log(str.substring(0,3)) // www
+        console.log(str.slice(0,4))   //www.
+        console.log(str.substr(0,4))  //www. 
+
+        // split
+
+        let box = 'www.jeffjade.com'
+        console.log(box.split('.'))      // ["www", "jeffjade", "com"]
+        console.log(box.split('.', 1))   // ["www"]
+        console.log(box.split('.').join('')) // wwwjeffjadecom
+
+
+
+        
+2
+3
+4
+5
+6
+7
+8
+9
+function ncieFunc() {
+  return "四海无人对夕阳";
+}
+var niceMan = "陈寅恪";
+var jadeTalk = `一生负气成今日 \n ${ncieFunc()} ,
+语出 ${niceMan} 的《忆故居》。
+`
+console.log(jadeTalk)
+    </script>
+</head>
+
+<body>
+    <div class="one" id="box"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>echarts-多柱子柱状图</title>
+    <!-- <link rel="shortcut icon" href="../js/echarts-2.2.7/doc/asset/ico/favicon.png"> -->
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/echarts.js"></script>
+    <style>
+    body,
+    html {
+        width: 99%;
+        height: 99%;
+        font-family: "arial, helvetica, sans-serif";
+        font-size: x-large;
+        font-kerning: inherit;
+        font-stretch: expanded;
+    }
+
+    #manyColumn {
+        width: 100%;
+        height: 100%;
+        font-size: 14px;
+        font-family: "微软雅黑";
+        backface-visibility: visible;
+        background-blend-mode: inherit;
+        background-origin: border-box;
+        background: content-box;
+        /* background-color: #5BC0DE; */
+    }
+    </style>
+    <script>
+    // var dom = document.getElementById("container");
+    // var myChart = echarts.init(dom);
+    $(function() {
+
+
+        var dom = document.getElementById("container");
+        var myChart = echarts.init(dom);
+        var app = {};
+        option = null;
+        // app.title = '嵌套环形图';
+
+        option = {
+            // title: {
+            //     text: '农家书屋面积及藏书量双柱形图',
+            //     subtext: '面积总数：970.00(㎡) 总藏书：51490(本)',
+            //     x: 'center'
+            // },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    crossStyle: {
+                        color: '#999'
+                    }
+                }
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {
+                        show: true
+                    }
+                }
+            },
+            legend: {
+                data: ['面积', '藏书','王力宏','周杰伦','林俊杰'],
+                bottom: 0
+            },
+            xAxis: [{
+                type: 'category',
+                data: ['赵巷镇', '徐泾镇', '华新镇', '重固镇', '白鹤镇', '朱家角镇', '练塘镇', '金泽镇', '夏阳街道', '盈浦街道', '香花桥街道'],
+                axisPointer: {
+                    type: 'shadow'
+                }
+            }],
+            // yAxis: [{
+            //     min: 0,
+            //     type: 'value'
+            // }],
+            yAxis: [{
+                type: 'value',
+                name: '面积(㎡)',
+                min: 0,
+                max: 1600,
+                interval: 200,
+                axisLabel: {
+                    formatter: '{value}'
+                },
+                nameLocation: 'center',
+                nameGap: 65
+            }],
+            series: [{
+                name: '面积',
+                type: 'bar',
+                data: [229.6, 530, 684, 296, 707, 970, 796, 136, 290, 60, 499],
+                barWidth: '10%',
+                itemStyle:{
+                    normal:{
+                        color:'red'
+                    }
+                }
+            }, {
+                name: '藏书',
+                type: 'bar',
+                // yAxisIndex: 1,
+                data: [131, 170, 378, 132, 330, 590, 473, 344, 135, 320, 234],
+                barWidth: '10%',
+                itemStyle:{
+                    normal:{
+                        color:'blue'
+                    }
+                }
+            },{
+                name: '王力宏',
+                type: 'bar',
+                data: [229.6, 530, 684, 296, 707, 970, 796, 1366, 290, 60, 499],
+                barWidth: '10%',
+                itemStyle:{
+                    normal:{
+                        color:'green'
+                    }
+                }
+            }, {
+                name: '周杰伦',
+                type: 'bar',
+                // yAxisIndex: 1,
+                data: [131, 170, 328, 173, 335, 510, 473, 393, 500, 300, 238],
+                barWidth: '10%',
+                itemStyle:{
+                    normal:{
+                        color:'yellow'
+                    }
+                }
+            },{
+                name: '林俊杰',
+                type: 'bar',
+                data: [229.6, 530, 684, 296, 707, 970, 796, 1366, 290, 60, 499],
+                barWidth: '10%',
+                itemStyle:{
+                    normal:{
+                        color:'pink'
+                    }
+                }
+            }]
+        };
+
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+    })
+    </script>
+</head>
+
+<body>
+    <div id="container" style="height: 100%"></div>
+</body>
+
+</html>

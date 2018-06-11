@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+        span{
+            width: 30px;
+            height: 10px;
+            display: inline-block;
+        }
+
+
+
+
+    </style>
+    <script src="js/jquery.min.js"></script>
+    <script>
+    $(function() {
+        //滚动广告
+         $('.input_check').keyup(function() { //input发生改变就会触发事件
+
+            var $test1 = /^(?:\d+|[a-zA-Z]+|[!@#$%^&*]+){6,12}$/; //  弱：纯数字，纯字母，纯特殊字符
+
+            var $test2 = /^(?![a-zA-z]+$)(?!\d+$)(?![!@#$%^&*]+$)[a-zA-Z\d!@#$%^&*]+$/; //中：字母+数字，字母+特殊字符，数字+特殊字符
+
+            var $test3 = /^(?![a-zA-z]+$)(?!\d+$)(?![!@#$%^&*]+$)(?![a-zA-z\d]+$)(?![a-zA-z!@#$%^&*]+$)(?![\d!@#$%^&*]+$)[a-zA-Z\d!@#$%^&*]+$/; //强：字母+数字+特殊字符
+
+            if ($test1.test($('.input_check').val())) { //必须先要满足第一个if才能进行下一个if    满足  弱  条件表示为红色
+                $('.password_border1').css('border', '2px solid #ccc');
+                if ($test2.test($('.input_check').val())) { //必须先要满足  弱  条件  才能进行这个if    满足  中  条件表示为黄色
+                    $('.password_border1').css('border', '2px solid #ccc');
+                    $('.password_border2').css('border', '2px solid yellow');
+
+                    if ($test3.test($('.input_check').val())) { //必须先要满足  中  条件才能进行这个if    满足  强  条件表示为绿色
+                         $('.password_border1').css('border', '2px solid #ccc')
+                         $('.password_border2').css('border', '2px solid #ccc')
+                         $('.password_border3').css('border', '2px solid green')
+
+                    } else { //没满足  强  条件   但满足了  中条件   就显示   黄色
+                         $('.password_border1').css('border', '2px solid #ccc')
+                         $('.password_border2').css('border', '2px solid yellow')
+                         $('.password_border3').css('border', '2px solid #ccc')
+
+                    };
+
+                } else { //没满足  中  条件就依旧显示红色
+                     $('.password_border1').css('border', '2px solid red')
+                     $('.password_border2').css('border', '2px solid #ccc')
+                     $('.password_border3').css('border', '2px solid #ccc')
+
+                };
+
+            } else { //没满足  弱  条件就依旧显示红色
+                 $('.password_border1').css('border', '2px solid red')
+                 $('.password_border2').css('border', '2px solid #ccc')
+                 $('.password_border3').css('border', '2px solid #ccc')
+
+            }
+
+        });
+
+
+
+    });
+    </script>
+</head>
+
+<body>
+    <input type="" name="" class="input_check">
+    <span class="password_border1"></span>
+    <span class="password_border2"></span>
+    <span class="password_border3"></span>
+</body>
+
+</html>

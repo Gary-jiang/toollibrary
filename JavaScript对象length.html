@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+   
+    </style>
+    <style>
+
+    </style>
+    <script src="js/jquery.min.js" name="one"></script>
+    <script>
+
+var arr=[12,23,5,3,25,98,76,54,56,76];
+console.log(arr.length);  // 10
+// console.log(arr[9])
+arr[15] = 34;
+console.log(arr.length);  //16
+console.log(arr[10]);     //undefine
+console.log(arr.toString())
+//12,23,5,3,25,98,76,54,56,76,,,,,,34
+
+
+
+
+var obj = {'1':'gg','2':'love','4':'meimei',length:5};
+Array.prototype.join.call(obj , '+'); //'+gg+love++meimei'
+
+    </script>
+</head>
+
+<body>
+    <div class="one" id="box"></div>
+
+</body>
+
+</html>

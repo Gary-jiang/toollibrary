@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <metaname="screen-orientation" content="portrait">
+        <metaname="x5-orientation" content="portrait">
+            <style>
+            #box{
+                font-size: 40px;
+            }
+            </style>
+           
+            <script src="js/jquery.min.js" name="one"></script>
+            <script>
+                window.onstorage=function(ev){
+                    alert(ev.key);    //获取具体发生变化的name
+                }
+
+            </script>
+</head>
+
+<body>
+    <div class="one" id="box">
+        你好奥好哦好好好的哦啊好
+    </div>
+</body>
+
+</html>

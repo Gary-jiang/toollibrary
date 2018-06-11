@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- <meta name="screen-orientation" content="portrait"> -->
+    <!-- <meta name="x5-orientation" content="portrait"> -->
+  
+    <script src="js/jquery.min.js" name="one"></script>
+    <script>
+        $(function(){
+            console.log(/^http:/.test("http://www.163.com"));
+            console.log(/^https:/.test("http://www.163.com"));
+            console.log(/^ahttp:/.test("http://www.163.com"));
+
+            // $匹配结尾位置
+            console.log(/.jpg$/.test("a.png"))
+            
+            // \b:匹配单词边界
+            console.log(/\bis\b/.test("this"));
+            console.log(/\bis\b/.test("that is a"));
+            
+            console.log(/\d/.test('123'));
+
+            //电话号码
+            console.log(/^1[3|5|8]\d{9}/.test('12161124433'));
+
+            //邮箱
+            console.log(/^(\w+\.)?\w+@(163|qq|188)\.com$/.test('jiang.one@qq.com'));
+        });
+    </script>
+</head>
+
+<body>
+
+  <p><div></div></p>
+
+</body>
+
+</html>

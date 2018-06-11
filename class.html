@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+   
+    </style>
+    <style>
+
+    </style>
+    <script src="js/jquery.min.js" name="one"></script>
+    <script>
+    window.onload = function(){
+        var oBox = document.getElementById('box');
+        // oBox.className = 'one box';
+        function hasClass(el,className){
+           return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
+        }
+        hasClass(oBox,'two');
+    };
+    
+    </script>
+</head>
+
+<body>
+    <div class="one" id="box"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .box {
+        width: 200px;
+        height: 200px;
+        background: red;
+    }
+    .arrow{
+        width: 100px;
+        height: 100px;
+        background-color:green;
+        position: absolute;
+    }
+    </style>
+    <script src=./js/jquery-1.11.3.min.js></script>
+    <script>
+    $(function() {
+        // var boxE = $(".box");
+        // var boxL = boxE.offset().left;
+        // var boxT = boxE.offset().top;
+        var clientW = $(window).width();
+        var clientT = $(window).height();
+
+        var css = {
+            left:0,
+            top:0,
+            variableL:(clientW-100)+'px',
+            variableT:(clientT-100)+'px'
+        };
+        init();
+        function init(){
+            $('.arrow').stop().animate(css, 2000, rowBack);
+        }
+        function rowBack() {
+            if (css.left === 0 && css.top === 0){
+                css.left = css.variableL;
+            }else if(css.left === css.variableL && css.top === 0){
+                css.top = css.variableT;
+            }else if(css.left === css.variableL && css.top === css.variableT){
+                css.left = 0;
+            }else if(css.left === 0 && css.top === css.variableT){
+                css.top = 0;
+            }
+            init();
+        }
+        $('.arrow').mouseenter(function(){
+            $(this).stop();
+        })
+        $('.arrow').mouseleave(function(event) {
+            init();
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <!-- <div class="box">1212121</div> -->
+    <div class="arrow"></div>
+</body>
+
+</html>

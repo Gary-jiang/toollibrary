@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+
+    </style>
+    <style>
+
+    </style>
+    <script src="js/jquery.min.js"></script>
+    <script>
+    $.ajax({
+        type: "post",
+        url: basePath + "notebook/findSpecial.do", //服务器请求地址
+        dataType: "json", //服务器返回的数据类型
+        data: {}, //发送到服务器的参数(Json形式)
+        success: function(result) {}, //请求成功后，接受服务器传来的Json字符串，并做相应的处理
+        error: function(xhr, status, error) {
+            alert("请求失败.");
+        }
+    });
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

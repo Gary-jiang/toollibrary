@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+
+    </style>
+    <style>
+
+    </style>
+    <style type="text/css" media="screen">
+    .path {
+        /* clip-path: polygon(5px 10px, 16px 3px, 16px 17px,16px 17px,16px 17px); */
+        clip-path: polygon(20% 0%, 80% 0%, 100% 50%, 0% 50%);
+        /* background-color: blue; */
+        background-size: cover;
+        background-image: url(bg.jpg);
+        height: 200px;
+        width: 200px;
+    }
+    /* .box {
+        -webkit-clip-path:polygon(20% 0%, 80% 0%, 100% 50%, 80% 100%, 20% 100%, 0% 50%);
+        clip-path: polygon(20% 0%, 80% 0%, 100% 50%, 80% 100%, 20% 100%, 0% 50%);
+        background-color: blue;
+        background-size: cover;
+        background-image: url(bg.jpg);
+        height: 200px;
+        width: 200px;
+    } */
+
+    .box {
+        -webkit-clip-path: polygon(0px 10px, 20px 0px, 20px 20px);
+        background-color: blue;
+    }
+
+    button {
+        width: 100px;
+        height: 60px;
+        border: 1px solid #EBEFF2;
+        padding: 8px 5px 20px 5px;
+        position: relative;
+        outline: none;
+        background: blue;
+        border-radius: 0 6px 6px 0;
+    }
+
+    .active:after {
+        content: '';
+        border-top: 30px solid #00f;
+        border-right: 97px solid transparent;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        border-radius: 0px 10px 0 0px;
+    }
+
+    .active:before {
+        content: '';
+        border-top: 30px solid #ccc;
+        border-right: 102px solid transparent;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        border-radius: 0px 16px 0 0px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="path"></div>
+    <div class="box"></div>
+    <button type="" class="active">稿件详情</button>
+</body>
+
+</html>

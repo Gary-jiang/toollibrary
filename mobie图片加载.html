@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+
+    </style>
+    <style>
+
+    </style>
+    <script src="js/jquery.min.js" name="one"></script>
+    <script>
+    $(function() {
+        
+        var render = function() {
+            var totla = 4;
+            var zWin = $(window);
+
+            var padding = 2;
+            var winWidth = zWin.width();
+            var picWidth = Math.floor((winWidth - padding * 3) / 4);
+            var tmpl = '';
+            for (var i = 1; i <= totla; i++) {
+                var p = padding;
+                var imgSrc = 'img/' + i + '.jpg';
+                if (i % 4 == 1) {
+                    p = 0;
+                }
+                tmpl += '<li style="width:' + picWidth + 'px;height:' + picWidth + 'px;padding-left:' + p + 'px;padding-top:' + padding + 'px;"><canvas id="cvs_' + i + '"></canvas></li>';
+                // console.log(tmpl);
+                console.log($('.box').html(tmpl));
+                var imageObj = new Image();
+                imageObj.index = i;
+                imageObj.onload = function() {
+                    var cvs = $('#cvs_' + this.index)[0].getContext('2d');
+                    cvs.width = this.width;
+                    cvs.height = this.height;
+                    cvs.drawImage(this, 0, 0);
+                }
+                imageObj.src = imgSrc;
+            }
+
+        }
+        render();
+    })
+    </script>
+</head>
+
+<body>
+<a href="tel:10010">10010</a>
+    <li class="box">
+        <canvas id="myCanvas" width="400" height="200"></canvas>
+    </li>
+</body>
+
+</html>

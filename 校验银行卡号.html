@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+    #wrapper {
+        position: relative;
+        width: 200px;
+        height: 100px;
+        border: 1px solid darkgray;
+    }
+
+    #progressbar {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -90px;
+        margin-top: -10px;
+        width: 180px;
+        height: 20px;
+        border: 1px solid darkgray;
+    }
+    /*在进度条元素上调用动画*/
+
+    #fill {
+        animation: move 2s;
+        text-align: center;
+        background-color: #6caf00;
+    }
+    /*实现元素宽度的过渡动画效果*/
+
+    @keyframes move {
+        0% {
+            width: 0;
+        }
+        100% {
+            width: 100%;
+        }
+    }
+    </style>
+    <script src="js/jquery.min.js"></script>
+    <script>
+    $(function() {
+        //检查银行卡号
+        // CheckBankNo('4392268705974336');
+        // var str = $('input').val();
+        // luhnCheck(str);
+        // $('input').blur(function(event) {
+        //     luhnCheck(str);
+        // });
+        //bankno为银行卡号
+        BPM.blockUI({
+            target: $("#blockAddDiv"),
+            boxed: true,
+            message: FeekongLan.label.loadmsg
+        }); //增加锁定
+        var pattern = /^([1-9]{1})(\d{14}|\d{18})$/,
+            str = $("#CardCode").val().replace(/\s+/g, "");
+        if (!pattern.test(str)) {
+            var msgModel = {
+                MsgType: "warning",
+                msg: "请正确输入银行卡号！",
+                result: false,
+                msgTitle: "系统提示"
+            };
+            BPM.ShowMsg(msgModel);
+            $("#CardCode").focus();
+            BPM.unblockUI($("#blockAddDiv")); //解除锁定
+            return false;
+        }
+    });
+    </script>
+</head>
+
+<body>
+    <!--外层容器-->
+    <input type="" name="" id="#blockAddDiv">
+</body>
+
+</html>

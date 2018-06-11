@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title></title>
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <meta name="author" content="Li.chen" />
+        <link rel="stylesheet" type="text/css" href="" />
+        <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    </head>
+    <body>
+		<h1>one
+            <p>two</p>
+        </h1>
+        <div>
+            ononon
+        </div>
+        <script type="text/javascript">
+            $(function(){
+                $('h1').append(str);
+                $('h1').appendTo($('div'));
+                function str(){
+                    var newstr = '<span>hellow</span>';
+                    return newstr;
+                }
+            })
+        </script>
+    </body>
+</html>

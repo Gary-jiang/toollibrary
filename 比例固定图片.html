@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>实现比例固定图片自适应布局</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <metaname="screen-orientation" content="portrait">
+        <metaname="x5-orientation" content="portrait">
+            <style>
+            .banner {
+                position: relative;
+                padding: 15.15% 0 0;
+            }
+
+            .banner img {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                left: 0;
+                top: 0;
+            }
+
+            .box {
+                background-image: url(bg.jpg);
+                /* padding: 15.15% 0 0; */
+                /* background-size: cover; */
+                height: calc(0.1515 * (100vw - 2rem));
+                background-size: cover;
+            }
+            </style>
+</head>
+
+<body>
+    <!-- <div class="banner">
+      <img src="bg.jpg">
+    </div> -->
+    <div class="box">
+    </div>
+</body>
+
+</html>

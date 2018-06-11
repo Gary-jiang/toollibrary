@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+    @media screen and (max-width: 767px) {
+        .main,
+        .main div:nth-child(1),
+        .footer {
+            width: 100% !important;
+        }
+        .main div:nth-child(2) {
+            width: 100%;
+        }
+    }
+    </style>
+    <style>
+
+    </style>
+    <script src="js/jquery.min.js"></script>
+    <script>
+    $(function() {
+        if ($('#main_page_home').length > 0) {
+            var $main_page_home = $('#main_page_home');
+            $main_page_home.find('.c').next('div').find('strong').html('<div class="video mbHidden"><div><embed width="480" height="360" quality="high" wmode="transparent" src="/historyroadshow/FileLibrary/video/player.swf" flashvars="autostart=true&amp;file=/historyroadshow/ipo/roadshow/603699/2b7c6e2ccb91/spzb/splj/a/20140109/d4d10a02b0042212e36862f7d9a60de9.flv&amp;skin=/historyroadshow/FileLibrary/video/modieus.swf&amp;controlbar=over" allowfullscreen="true" menu="true" loop="true" allowscriptaccess="always" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"><br></div></div><!-- 手机端 --><div class="video videoShow" ><div><video preload="none" class="video_box" name="h5Video" src="http://222.73.229.170:8500/HLS/c01.m3u8"  style=""  controls poster="/historyroadshow/images/spzb_zwsp.jpg"></video></div></div><!-- END -->')
+        }
+    })
+    </script>
+</head>
+
+<body>
+    <div id="main_page_home">
+        <!--页中开始 -->
+        <div class="title_bj">公司风采</div>
+        <style type="text/css">
+        .banner_bg {
+            float: left;
+            margin: 0 0 0 -15px;
+            padding: 15px;
+            width: 800px;
+            background: url(/historyroadshow/images/bg.png) no-repeat 0 0;
+        }
+        /*  focus */
+        
+        #focus {
+            width: 800px;
+            height: 420px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        #focus ul {
+            height: 380px;
+            position: absolute;
+        }
+        
+        #focus ul li {
+            float: left;
+            width: 800px;
+            height: 440px;
+            overflow: hidden;
+            position: relative;
+            background: #fff;
+            top: 0px;
+        }
+        
+        #focus ul li div {
+            position: absolute;
+            overflow: hidden;
+        }
+        
+        #focus .btnBg {
+            position: absolute;
+            width: 800px;
+            height: 35px;
+            left: 0;
+            bottom: 0;
+            background: #000;
+        }
+        
+        @media screen and (-webkit-min-device-pixel-ratio:0) {
+            #focus .btnBg {
+                height: 36px;
+                line-height: 6px;
+            }
+        }
+        
+        #focus div.class {
+            background: #000;
+        }
+        
+        #focus .text span {
+            position: absolute;
+            width: 580px;
+            left: 0;
+            bottom: 0;
+            z-index: 100;
+            color: #FFF;
+            font-weight: bold;
+            padding-left: 10px;
+            font-size: 12px;
+            padding-bottom: 6px;
+            height: 26px;
+            overflow: hidden;
+        }
+        
+        @media screen and (-webkit-min-device-pixel-ratio:0) {
+            #focus .text {
+                line-height: 12px;
+            }
+        }
+        
+        #focus .btn {
+            position: absolute;
+            width: 696px;
+            height: 14px;
+            padding: 5px 10px;
+            right: 0;
+            bottom: 0;
+            text-align: right;
+        }
+        
+        #focus .btn span {
+            display: inline-block;
+            _display: inline;
+            _zoom: 1;
+            width: 12px;
+            height: 12px;
+            _font-size: 0;
+            margin-left: 5px;
+            cursor: pointer;
+            background: #fff;
+        }
+        
+        #focus .btn span.on {
+            background: #fff;
+        }
+        
+        #focus .preNext {
+            width: 45px;
+            height: 100px;
+            position: absolute;
+            top: 150px;
+            background: url(/historyroadshow/images/sprite.png) no-repeat 0 0;
+            cursor: pointer;
+        }
+        
+        #focus .pre {
+            left: 0;
+        }
+        
+        #focus .next {
+            right: 0;
+            background-position: right top;
+        }
+        </style>
+        <script type="text/javascript">
+        jQuery(function() {
+            var sWidth = jQuery("#focus").width();
+            var len = jQuery("#focus ul li").length;
+            var index = 0;
+            var picTimer;
+
+            var btn = "<div class='btnBg'></div><div class='btn'>";
+            for (var i = 0; i < len; i++) {
+                btn += "<span></span>";
+            }
+            btn += "</div><div class='preNext pre'></div><div class='preNext next'></div>";
+            jQuery("#focus").append(btn);
+            jQuery("#focus .btnBg").css("opacity", 0.5);
+
+            jQuery("#focus .btn span").css("opacity", 0.4).mouseenter(function() {
+                index = jQuery("#focus .btn span").index(this);
+                //alert(index+":"+i);
+                showPics(index);
+                showText(index);
+
+
+            }).eq(0).trigger("mouseenter");
+
+            jQuery("#focus .preNext").css("opacity", 0.2).hover(function() {
+                jQuery(this).stop(true, false).animate({
+                    "opacity": "0.5"
+                }, 300);
+            }, function() {
+                jQuery(this).stop(true, false).animate({
+                    "opacity": "0.2"
+                }, 300);
+            });
+
+            jQuery("#focus .pre").click(function() {
+                index -= 1;
+                if (index == -1) {
+                    index = len - 1;
+                }
+                showPics(index);
+                showText(index);
+            });
+
+            jQuery("#focus .next").click(function() {
+                index += 1;
+                if (index == len) {
+                    index = 0;
+                }
+                showPics(index);
+                showText(index);
+            });
+
+            function showText(index) {
+                jQuery("#focus div span").eq(index).stop(true, true).css({
+                    display: "block"
+                }).siblings().stop(true, true).css({
+                    display: "none"
+                });
+
+            }
+            jQuery("#focus ul").css("width", sWidth * (len));
+
+            jQuery("#focus").hover(function() {
+                clearInterval(picTimer);
+            }, function() {
+                picTimer = setInterval(function() {
+                    showPics(index);
+                    showText(index);
+                    index++;
+                    if (index == len) {
+                        index = 0;
+                    }
+                }, 6000);
+            }).trigger("mouseleave");
+
+            function showPics(index) {
+                jQuery("#focus ul li").eq(index).stop(true, true).css({
+                    display: "block"
+                }).siblings().stop(true, true).css({
+                    display: "none"
+                });
+                jQuery("#focus .btn span").stop(true, false).animate({
+                    "opacity": "0.4"
+                }, 300).eq(index).stop(true, false).animate({
+                    "opacity": "1"
+                }, 300);
+            }
+        });
+        </script>
+        <div style="margin:0 auto; width:800px;" class="mbHidden">
+            <div class="banner_bg">
+                <div id="focus">
+                    <div class="text"><span style="display: none;"></span> <span style="display: none;"></span> <span style="display: block;"></span> <span style="display: none;"></span> </div>
+                    <ul style="width: 3200px;">
+                        <li style="display: none;"><img alt="" src="/historyroadshow/ipo/roadshow/600917/f76437398087/gsfc/img/a/20140911/4443f1945a2c22ac38ba304ba084b1a4.jpg"></li>
+                        <li style="display: none;"><img alt="" src="/historyroadshow/ipo/roadshow/600917/f76437398087/gsfc/img/a/20140911/a1d9a724f5fab1035f6e799b436c3b1e.jpg"></li>
+                        <li style="display: block;"><img alt="" src="/historyroadshow/ipo/roadshow/600917/f76437398087/gsfc/img/a/20140911/f299fce3ce00fb0f0a6460e2e7112bb8.jpg"></li>
+                        <li style="display: none;"><img alt="" src="/historyroadshow/ipo/roadshow/600917/f76437398087/gsfc/img/a/20140911/62b84bf5358626b23e3c3f9bca152d07.jpg"></li>
+                    </ul>
+                    <div class="btnBg" style="opacity: 0.5;"></div>
+                    <div class="btn"><span style="opacity: 0.4;"></span><span style="opacity: 0.4;"></span><span style="opacity: 1;"></span><span style="opacity: 0.4;"></span></div>
+                    <div class="preNext pre" style="opacity: 0.2;"></div>
+                    <div class="preNext next" style="opacity: 0.2;"></div>
+                </div>
+            </div>
+        </div>
+        <!-- 手机端Swiper -->
+        <div class="swiper-container companyShow swiper-container-horizontal swiper-container-android">
+            <div class="swiper-wrapper" style="transform: translate3d(-2640px, 0px, 0px); -webkit-transform: translate3d(-2640px, 0px, 0px); transition: 300ms; -webkit-transition: 300ms;">
+                <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4" style="width: 360px; margin-right: 300px;"><img alt="" src="undefined"></div>
+                <div class="swiper-slide" data-swiper-slide-index="0" style="width: 360px; margin-right: 300px;"><img alt="" src="/historyroadshow/ipo/roadshow/600917/f76437398087/gsfc/img/a/20140911/4443f1945a2c22ac38ba304ba084b1a4.jpg"></div>
+                <div class="swiper-slide" data-swiper-slide-index="1" style="width: 360px; margin-right: 300px;"><img alt="" src="/historyroadshow/ipo/roadshow/600917/f76437398087/gsfc/img/a/20140911/a1d9a724f5fab1035f6e799b436c3b1e.jpg"></div>
+                <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="2" style="width: 360px; margin-right: 300px;"><img alt="" src="/historyroadshow/ipo/roadshow/600917/f76437398087/gsfc/img/a/20140911/f299fce3ce00fb0f0a6460e2e7112bb8.jpg"></div>
+                <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="3" style="width: 360px; margin-right: 300px;"><img alt="" src="/historyroadshow/ipo/roadshow/600917/f76437398087/gsfc/img/a/20140911/62b84bf5358626b23e3c3f9bca152d07.jpg"></div>
+                <div class="swiper-slide swiper-slide-next" data-swiper-slide-index="4" style="width: 360px; margin-right: 300px;"><img alt="" src="undefined"></div>
+                <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" style="width: 360px; margin-right: 300px;"><img alt="" src="/historyroadshow/ipo/roadshow/600917/f76437398087/gsfc/img/a/20140911/4443f1945a2c22ac38ba304ba084b1a4.jpg"></div>
+            </div>
+            <!-- Pagination -->
+            <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span class="swiper-pagination-bullet"></span></div>
+            <!-- Arrows -->
+            <div class="swiper-button-next" style="display: none;"></div>
+            <div class="swiper-button-prev" style="display: none;"></div>
+        </div>
+        <!-- END -->
+        <div class="c"></div>
+        <div style="margin:20px;">
+            <div>
+                <strong><embed class="flv300x225" type="application/x-shockwave-flash" quality="high" wmode="transparent" src="/historyroadshow/FileLibrary/video/player.swf" flashvars="autostart=true&amp;file=/historyroadshow/ipo/roadshow/600917/f76437398087/gsfc/gsjs/a/20140916/a570d73bb17e78ca57b87895f949a482.flv&amp;skin=/historyroadshow/FileLibrary/video/modieus.swf&amp;controlbar=over" allowfullscreen="true" menu="true" loop="true" allowscriptaccess="always" pluginspage="http://www.macromedia.com/go/getflashplayer" height="225" width="300">公司简介<br></strong>
+                <br>　　重庆燃气集团股份有限公司是重庆市属重点国有企业重庆市能源集团有限公司的控股子公司，是市国资委下属骨干企业。公司基本面良好，业绩稳定，市场发展前景广阔。
+                <br>　　公司前身为1973年成立的重庆市天然气公司，是全国最早成立的燃气企业之一。2010年3月，公司以增资扩股方式引进华润燃气（中国）投资有限公司作为战略投资者，并改组为中外合资公司。2011年2月，公司经国家商务部、重庆市国资委批准，整体变更设立为股份有限公司，注册资本为14亿元。
+                <br>　　公司致力于精耕城市燃气储、输、配及燃气工程设计，安装，建设，压缩天然气，分布式能源等经营业务。公司现拥有分公司10家，全资子公司15家，控股子公司10家，参股子公司2家。天然气供应范围已覆盖重庆市38个行政区县中的24个区县、3 个国家级开发区以及 25 个市级工业园区，服务客户突破350万户，年供气量近25亿立方米，年销售收入达59亿元,利润总额达3.7亿元。公司现有运营输气管网1.65万余公里，球罐27台，储配站11座、配气站127座。
+                <br>　　公司作为关系国计民生的管理服务型企业，立足城市燃气供应行业基础性、服务性、公共安全性三大特征，以“奉献光热、共创卓越”为企业核心理念，秉承“诚信、利民、安全、创新”的企业精神，努力营造“心齐、气顺、风正、劲足”的企业氛围。公司通过充足的气源、安全合理的燃气输配管网、充分的储气调峰设施和高度自动化的调度手段、完善的抢险应急救援机制及全方位、人性化的优质服务打造重庆市天然气安全供应保障体系，为中国最年轻直辖市——重庆构建起保障清洁能源供应的“蓝色命脉”。
+                <br>　　公司将按照3567发展战略目标,围绕“转型升级、提质提效，保安全保民生保供气”这一主线，立足重庆、内外扩张，依托主业、上下延伸，以城市燃气经营为核心业务，加快气源多渠道、资本结构多元化、产业结构多极化建设，努力成为对社会、股东、客户、员工负责任的上市公司，推动集团由规模扩张型向规模扩张与质量效益并举转型，成为主业突出、管理规范、经营稳健的全国一流的城市燃气供应和服务型企业。
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

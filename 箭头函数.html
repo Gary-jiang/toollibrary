@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <!-- <meta name="apple-mobile-web-app-capable" content="yes" /> -->
+    <!-- <meta name="apple-mobile-web-app-status-bar-style" content="black" /> -->
+    <title>Document</title>
+    <script src="./js/jquery-1.11.3.min.js"></script>
+    <!-- <link media ="screen and(min-width:768px)" href="./css/one.css" rel="stylesheet"  /> -->
+    <!-- <link media="screen and (min-width:768px)" href="./css/one.css" type="text/css" rel="stylesheet"/>  -->
+    <!-- <link media="screen and (max-width:767px)" href="./css/two.css" type="text/css" rel="stylesheet"/>  -->
+    <!-- <link media ="screen and(max-width:767px)" href="./css/two.css" rel="stylesheet"  /> -->
+    <style>
+    div {
+        width: 40%;
+        height: 300px;
+        background-color: blue;
+        margin: 0 auto;
+    }
+    </style>
+    <script type="text/javascript">
+    // var obj = {
+    //     id: "awesome",
+    //     cool: function coolFn() {
+    //         console.log(this.id);
+    //     }
+    // };
+    // var id = "not awesome"
+    // obj.cool(); // 酷
+    // setTimeout(obj.cool, 100);
+
+    // var obj = {
+    //     count: 0,
+    //     cool: function coolFn() {
+    //         var self = this;
+    //         if (self.count < 1) {
+    //             setTimeout(function timer() {
+    //                 self.count++;
+    //                 console.log("awesome?");
+    //             }, 100);
+    //         }
+    //     }
+    // };
+    // obj.cool(); // 酷吧？
+
+    var obj = {
+        count: 0,
+        cool: function coolFn() {
+            if (this.count < 1) {
+                setTimeout(() => { // 箭头函数是什么鬼东西？
+                    this.count++;
+                    console.log("awesome?");
+                }, 100);
+            }
+        }
+    };
+    obj.cool(); // 很酷吧?
+
+    var foo = a => {
+        console.log(a);
+    };
+    foo(2); // 2
+    </script>
+</head>
+
+<body>
+    <div id="my_button">one</div>
+</body>
+
+</html>

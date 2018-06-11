@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script src="./js/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var myVideo = document.getElementById("video");
+        $('.mute').click(function(event) {
+            myVideo.muted = true; // (是否静音： 是)
+        });
+        $('.openMute').click(function(event) {
+            myVideo.muted = true; // (是否静音： 否)
+        });
+        $('.play').click(function(event) {
+            myVideo.play(); // (播放)
+        });
+        $('.stop').click(function(event) {
+            myVideo.pause(); // (停止播放)
+        });
+
+        $('.skip').click(function(event) {
+            video.currentTime += 2;// (快进)
+        });
+        $('.restart').click(function(event) {
+            myVideo.currentTime = 0;// (重播)
+        });
+        //上一个下一个 方法改变地址
+        var newAdd = $('#mp').attr('src').split('.');
+        newAdd[0] = newAdd[0]+1;
+        newAdd = newAdd.join('.');
+        // 填充进去
+        $('#mp').attr('src',newAdd)
+        //地址放入数组中
+    })
+    </script>
+</head>
+
+<body>
+    <button class="mute">静音</button>
+    <button class="openMute">打开声音</button>
+    <button class="play">播放</button>
+    <button class="stop">停止播放</button>
+    <button class="fullScreen">全屏</button>
+    <button class="skip">快进</button>
+    <button class="restart">重播</button>
+    <button class="next">next</button>
+    <button class="pro">pro</button>
+    <video id="video" controls poster="bg.jpg" width="600" height="400">
+        <source src="test.mp4" type="video/mp4" id="mp" />
+        <p>Your browser does not support the video tag.</p>
+    </video>
+</body>
+
+</html>

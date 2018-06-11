@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+
+    </style>
+    <script type="text/javascript">
+    window.onload=function(){
+        var newArry = [2,6,5,2,4,8,0,9];
+        console.log(bubbleSort(newArry));
+        function bubbleSort(arr) {
+            for (var i = 0; i < arr.length; i++) {
+                for (var j = 0; j < arr.length - 1; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        var temp = arr[j + 1];
+                        arr[j + 1] = arr[j];
+                        arr[j] = temp;
+                    }
+                }
+            }
+            return arr;
+        }
+
+        // function randomSort(a,b){
+        //     return Math.random()>0.5?-1:1;
+        // }
+        // console.log(newArry.sort(randomSort));
+    };
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

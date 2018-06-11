@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>找key</title>
+    <script>
+    // var one = {
+    //     one: {
+    //         first: 1
+    //     },
+    //     two: {
+    //         second: 2
+    //     }
+    // }
+    // for (var i in one) {
+
+    //     if (i == oneKey) {
+    //         alert(true);
+    //     } else {
+    //         alert(false);
+    //     }
+    // }
+    </script>
+    <style>
+    a {
+        text-decoration: none;
+        display: inline-block;
+        position: relative;
+        color: #555;
+        border-bottom: none;
+        line-height: 14px;
+        vertical-align: top;
+    }
+    
+    a:hover {
+        color: #222;
+        border-bottom-color: #222;
+    }
+    
+    a:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        /*height: 2px;*/
+        bottom: 0;
+        left: 0;
+        /*width: 100px;*/
+        height: 2px;
+        color: red;
+        background-color: black;
+        visibility: hidden;
+        transform: scaleX(0);
+        transition: .25s all ease;
+    }
+    
+    a:hover:before {
+        visibility: visible;
+        -webkit-transform: scaleX(1);
+        -moz-transform: scaleX(1);
+        -ms-transform: scaleX(1);
+        -o-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+    </style>
+</head>
+
+<body>
+    <a href="javascript:;">hello word</a>
+</body>
+
+</html>

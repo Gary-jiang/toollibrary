@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+
+
+
+
+    };
+    var checkRegisterForm = function() {
+        var name = document.getElementById('username').value;
+        var pwd1 = document.getElementById('password').value;
+        var pwd2 = document.getElementById('password-2').value;
+        if (/^[\w\d]{3,10}$/.test(name) === false) {
+            alert("用户名格式错误");
+            return false;
+        }
+
+        if (pwd1 === pwd2 && pwd1.length < 12 && pwd1.length > 6) {
+            alert("成功");
+            return true;
+        }
+        alert("密码格式错误");
+        return false;
+    }
+    </script>
+</head>
+
+<body>
+    <!-- HTML结构 -->
+    <form id="test-register" action="#" target="_blank" onsubmit="return checkRegisterForm()">
+        <p id="test-error" style="color:red"></p>
+        <p>
+            用户名:
+            <input type="text" id="username" name="username">
+        </p>
+        <p>
+            口令:
+            <input type="password" id="password" name="password">
+        </p>
+        <p>
+            重复口令:
+            <input type="password" id="password-2">
+        </p>
+        <p>
+            <button type="submit">提交</button>
+            <button type="reset">重置</button>
+        </p>
+    </form>
+</body>
+
+</html>

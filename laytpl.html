@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Document</title>
+  <script type="text/javascript" charset="utf-8" src="./js/jquery.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./js/laytpl.js"></script>
+  <script>
+    // function intiKMInfo() {  
+    //        $.ajax({  
+    //            type: "post",  
+    //            url: "../../ashx/zlxxzs.ashx",  
+    //            data: "",  
+    //            success: function (data) {  
+    //                var gettpl = document.getElementById('demo').innerHTML;   //获取拼接部分的内容  
+    //                laytpl(gettpl).render(eval(data), function (html) {       //給拼接的模板绑定数据  
+    //                    document.getElementById('view').innerHTML = html;    // 吧生成的结构绑定在负责呈现内容的div中。  
+    //                });  
+    //            }  
+    //        });  
+    //    }  
+    
+  </script>
+  <script id="demo" type="text/javascript">
+   // <div id class="message">
+   //              <span>总体概况：</span> <span id="all">总数：<label>{{d.length}}</label></span> <span id="online">在线：
+   //              <label>{{getFMonline(d)}}</label></span>
+   //              <span id="outline">离线：<label>{{getFMoffline(d)}}</label></span>
+   //          </div>
+   //          <div class="data-warp">
+   //        {{# for(var i = 0, len = d.length; i < len; i++){ }}
+   //                  <div class="data-box green ">
+   //        <div class="data-box-con">
+   //          <h4>{{d[i].QYMC}}</h4>
+   //          <table border="0" cellspacing="0" cellpadding="0">
+   //            <tr>
+   //              <td class="item">时间：</td>
+   //              <td colspan="3  ">{{d[i].CJSJ}}</td>
+   //            </tr>
+   //            <tr>
+   //              <td class="item">日流量：</td>
+   //              <td class="data">{{d[i].FSLLCOU}}吨</td>
+   //              <td class="item">累积流量：</td>
+   //              <td class="data">{{d[i].FSMCOU}}吨</td>
+   //            </tr>
+   //            <tr>
+   //              <td class="item">瞬时流量：</td>
+   //              <td class="data">0吨</td>
+   //              <td class="item">剩余流量：</td>
+   //              <td class="data">{{d[i].FSYCOU}}吨</td>
+   //            </tr>
+   //            <tr>
+   //              <td class="item">阀门状态：</td>
+   //              <td colspan="3"><span class="FM-{{getFMInfo(d[i].KGZT)}}"></span></td>
+   //            </tr>
+   //          </table>
+   //        </div>
+   //        <div class="{{checkNewLine(i+1)}}"></div>
+   //      </div>
+   //        {{# } }}
+
+   //          </div>
+   <h1>{{ d.title }}</h1>
+    <ul>
+    {{# for(var i = 0, len = d.list.length; i < len; i++){ }}
+      <li>
+        <span>姓名：{{ d.list[i].name }}</span>
+        <span>城市：{{ d.list[i].city }}</span>
+      </li>
+    {{# } }}
+    </ul>
+    </script>
+</head>
+<body>
+  <div id="view"></div>
+  <script>
+    var data = {
+      title: '前端攻城师',
+      list: [{name: '贤心', city: '杭州'}, {name: '谢亮', city: '北京'}, {name: '浅浅', city: '杭州'}, {name: 'Dem', city: '北京'}]
+    };
+    var gettpl = document.getElementById('demo').innerHTML;
+    laytpl(gettpl).render(data, function(html){
+      document.getElementById('view').innerHTML = html;
+    });
+  </script>
+</body>
+</html>

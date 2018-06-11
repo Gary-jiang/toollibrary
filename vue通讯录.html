@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="js/vuex.js"></script>
+    <!-- <script src="js/layerui.js"></script> -->
+    <!-- <script src="js/laypage.js"></script> -->
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        body {
+            /* height: 2000px; */
+        }
+
+        #header {
+            width: 100%;
+            height: 40px;
+            background: #666;
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            position: fixed;
+            top: 0;
+            z-index: 2;
+        }
+
+        #header button {
+            height: 100%;
+            padding: 0 5px;
+        }
+
+        #header button:nth-of-type(1) {
+            float: left;
+        }
+
+        #header button:nth-of-type(2) {
+            float: right;
+        }
+
+        #list {
+            position: relative;
+            top: 40px;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        #list .list_user p {
+            background: #ccc;
+            padding-left: 10px;
+        }
+
+        #list .list_user ul li {
+            height: 50px;
+            line-height: 50px;
+            border-bottom: 1px solid #ccc;
+            padding-left: 10px;
+        }
+
+        .list_index {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            padding-right: 10px;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        #alert {
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 20;
+            display: none;
+        }
+
+        #alert .alert_content {
+            width: 200px;
+            height: 150px;
+            background: white;
+            border-radius: 5px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <my-header custom-title="通讯录">
+            <button @touchstart="backBtn" slot="left">返回</button>
+            <button @touchstart="homeBtn" slot="right">主页</button>
+        </my-header>
+        <my-list :user-data=userData></my-list>
+        <my-alert custom-title="呼叫">
+            <div class="alert_btn">
+                <button @touchstart="confirm">确定</button>
+                <button @touchstart="cancel">取消</button>
+            </div>
+        </my-alert>
+    </div>
+    <script>
+        var userData = [
+            {
+                "index": "A",
+                "users": [{
+                    "name": "a1",
+                    "tel": "13112345671"
+                }, {
+                    "name": "a2",
+                    "tel": "13112345672"
+                }, {
+                    "name": "a3",
+                    "tel": "13112345673"
+                }]
+            },
+            {
+                "index": "B",
+                "users": [{
+                    "name": "b1",
+                    "tel": "13112345674"
+                }, {
+                    "name": "b2",
+                    "tel": "13112345675"
+                }, {
+                    "name": "b3",
+                    "tel": "13112345676"
+                }]
+            },
+            {
+                "index": "C",
+                "users": [{
+                    "name": "c1",
+                    "tel": "13112345677"
+                }, {
+                    "name": "c2",
+                    "tel": "13112345678"
+                }, {
+                    "name": "c3",
+                    "tel": "13112345679"
+                }]
+            },
+            {
+                "index": "D",
+                "users": [{
+                    "name": "d1",
+                    "tel": "13112345610"
+                }, {
+                    "name": "d2",
+                    "tel": "13112345611"
+                }, {
+                    "name": "d3",
+                    "tel": "13112345612"
+                }]
+            }
+        ];
+        Vue.component('my-header', {
+            template: `<div id="header" >
+                        <slot name="left"></slot>
+                        {{customTitle}}
+                        <slot name="right"></slot>
+                    </div>`,
+            props: {
+                'customTitle': {
+                    type: String,
+                    default: '标题'
+                },
+                'customFixed': {
+                    type: Boolean,
+                    default: false
+                }
+            }
+        });
+        Vue.component('my-list', {
+            template: `<div id="list">
+                        <ul class="list_user" ref="listUser" @touchmove ="bMove = true">
+                            <li v-for="item in userData">
+                                <p>{{item.index}}</p>
+                                <ul>
+                                    <li @touchend="showTel(user.tel)" v-for="user in item.users">{{user.name}}</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="list_index" ref="listIndex">
+                            <li @touchstart ="setScroll" v-for="item in userIndex">{{item}}</li>
+                        </ul>
+                    </div>`,
+            data() {
+                return {
+                    bMove: false
+                }
+            },
+            props: {
+                'user-data': {
+                    type: Array,
+                    default: function () {
+                        return [];
+                    }
+                }
+            },
+            computed: {
+                userIndex: function () {
+                    return this.filterIndex(this.userData)
+                }
+            },
+            methods: {
+                filterIndex: function (data) {
+                    var result = [];
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].index) {
+                            result.push(data[i].index);
+                        }
+                    }
+                    return result;
+                },
+                setListIndexPos: function () {
+                    var iH = this.$refs.listIndex.offsetHeight;
+                    this.$refs.listIndex.style.marginTop = -iH / 2 + 'px';
+                },
+                setScroll: function (ev) {
+                    // ev.target.innerHTML
+                    var ap = this.$refs.listUser.getElementsByTagName('p');
+                    for (var i = 0; i < ap.length; i++) {
+                        if (ap[i].innerHTML == ev.target.innerHTML) {
+                            // var scrollTopE =  document.documentElement.scrollTop;
+                            document.documentElement.scrollTop = ap[i].offsetTop;
+                            // document.body.scrollTop = ap[i].offsetTop;
+                            // console.log(document.body.scrollTop);
+                        }
+                    };
+                },
+                showTel: function (tel) {
+                    if (!this.bMove) {
+                        // console.log(tel);
+                        busVM.$emit('changeTel', tel)
+                    } else {
+                        this.bMove = false;
+                    }
+                }
+            },
+            mounted: function () {
+                this.setListIndexPos();
+            }
+        });
+
+        Vue.component('my-alert', {
+            template: `<div id="alert" ref="alert">
+                            <div class="alert_content">
+                                <div class="alert_title">{{customTitle}}</div>
+                                <div class="alert_body">{{customBody}}</div>
+                                <slot></slot>
+                            </div>
+                        </div>`,
+            props: {
+                'customTitle': {
+                    type: String,
+                    default: '弹窗'
+                }
+            },
+            data() {
+                return {
+                    'customBody': ''
+                }
+            },
+            mounted: function (tel) {
+                busVM.$on('changeTel', function (tel) {
+                    this.customBody = tel;
+                    this.$refs.alert.style.display = "flex";
+                }.bind(this));
+
+            }
+        });
+        var busVM = new Vue();
+        var my = new Vue({
+            el: "#app",
+            data: {
+                userData: userData
+            },
+            methods: {
+                backBtn() {
+                    alert('back')
+                },
+                homeBtn() {
+                    alert('home')
+                },
+                confirm() {
+                    alert('sure');
+                },
+                cancel() {
+                    this.$children[2].$el.style.display = 'none';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

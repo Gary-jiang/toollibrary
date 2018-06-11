@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+
+    </style>
+    <style>
+
+    </style>
+    <script src="js/jquery.min.js"></script>
+    <script>
+    function foo() {
+        console.log(this.a);
+    }
+    var obj1 = {
+        a: 2,
+        foo: foo
+    }
+    var obj2 = {
+        a: 3,
+        foo: foo
+    }
+obj1.foo();
+obj2.foo();
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

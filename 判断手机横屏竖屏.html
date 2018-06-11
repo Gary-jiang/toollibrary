@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <!-- <meta name="apple-mobile-web-app-capable" content="yes" /> -->
+    <!-- <meta name="apple-mobile-web-app-status-bar-style" content="black" /> -->
+    <title>Document</title>
+    <!-- <script src="./js/jquery-1.11.3.min.js"></script> -->
+    <!-- <link media ="screen and(min-width:768px)" href="./css/one.css" rel="stylesheet"  /> -->
+    <!-- <link media="screen and (min-width:768px)" href="./css/one.css" type="text/css" rel="stylesheet"/>  -->
+    <!-- <link media="screen and (max-width:767px)" href="./css/two.css" type="text/css" rel="stylesheet"/>  -->
+    <!-- <link media ="screen and(max-width:767px)" href="./css/two.css" rel="stylesheet"  /> -->
+
+    <!-- 竖屏 -->
+    <link rel="stylesheet" media="all and (orientation:portrait)" href="one.css">
+    <!-- 横屏 -->
+    <link rel="stylesheet" media="all and (orientation:landscape)" href="two.css">
+    <style>
+
+    </style>
+    <script type="text/javascript">
+    window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
+        if (window.orientation === 180 || window.orientation === 0) {
+            document.write('1');
+        }
+        if (window.orientation === 90 || window.orientation === -90) {
+            // alert('横屏状态！');
+            document.write('2');
+
+        }
+    }, false);
+    </script>
+</head>
+
+<body>
+    <div id="my_button">one</div>
+</body>
+
+</html>

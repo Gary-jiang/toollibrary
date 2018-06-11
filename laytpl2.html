@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Document</title>
+  <script type="text/javascript" charset="utf-8" src="./js/jquery.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./js/laytpl.js"></script>
+
+<script id="demo" type="text/html">
+  <!-- <h1>{{ d.title }}</h1> -->
+  <ul>
+  {{# for(var i = 0, len = d.data.length; i < len; i++){ }}
+    <li>
+      <span>姓名：{{ d.data[i].word }}</span>
+      <span>城市：{{ d.data[i].num }}</span>
+    </li>
+  {{# } }}
+  </ul>
+</script>
+</head>
+<body>
+  <div id="view"></div>
+  <script>
+    // var data = {
+    //   title: '前端攻城师',
+    //   list: [{name: '贤心', city: '杭州'}, {name: '谢亮', city: '北京'}, {name: '浅浅', city: '杭州'}, {name: 'Dem', city: '北京'}]
+    // };
+    function intiKMInfo() { 
+      sseQueryURL="http://10.10.10.28:9080/sseQuery/";
+         $.ajax({  
+             url: sseQueryURL + "search/getCountSearchResult.do",
+              type: "POST",
+              dataType: "jsonp",
+              jsonp: "jsonCallBack",
+              data: {
+                  search: "lmmzs",
+                  searchword: "T_L CTITLE T_D E_KEYWORDS T_JT_E likeT_L2T_RT_R"
+              },
+              cache: false,  
+             success: function (data) {  
+              console.log(data);
+                 var gettpl = document.getElementById('demo').innerHTML;   //获取拼接部分的内容  
+                 laytpl(gettpl).render(data, function (html) {       //給拼接的模板绑定数据  
+                     document.getElementById('view').innerHTML = html;    // 吧生成的结构绑定在负责呈现内容的div中。  
+                 });  
+             }  
+         });  
+     }  
+     intiKMInfo();
+    // var gettpl = document.getElementById('demo').innerHTML;
+    // console.log(gettpl);
+    //   laytpl(gettpl).render(data, function(html2){
+    //     console.log(html2);
+    //     document.getElementById('view').innerHTML = html2;
+    //   });
+    
+  </script>
+</body>
+</html>

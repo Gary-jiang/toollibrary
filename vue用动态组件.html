@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="js/vuex.js"></script>
+    <!-- <script src="js/layerui.js"></script> -->
+    <!-- <script src="js/laypage.js"></script> -->
+
+</head>
+
+<body>
+    <div id="app">
+        <button @click="changeC(1)">1</button>
+        <button @click="changeC(2)">12</button>
+        <button @click="changeC(3)">123</button>
+        <keep-alive>
+            <component :is="nowHeader"></component>
+        </keep-alive>
+    </div>
+    <script>
+
+        var my = new Vue({
+            el: "#app",
+            data: {
+                nowHeader: 'my-header-1'
+            },
+            components: {
+                'my-header-1': {
+                    template: '<div>组件1<input type="search" name="" value="" placeholder=""></div>'
+                },
+                'my-header-2': {
+                    template: '<div>组件2<input type="search" name="" value="" placeholder=""></div>'
+                },
+                'my-header-3': {
+                    template: '<div>组件3<input type="search" name="" value="" placeholder=""></div>'
+                },
+            },
+            methods: {
+                changeC: function (num) {
+                    this.nowHeader = 'my-header-' + num;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

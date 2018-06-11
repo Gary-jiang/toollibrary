@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+
+    </style>
+    <style>
+
+    </style>
+    <script src="js/jquery.min.js"></script>
+    <script>
+    $(function() {
+        var testWrod = '测试';
+        var one = "T_L CTITLE T_D CONTENT T_JT_E likeT_L?T_RT_R ";
+        one = one.replace('?',testWrod);
+
+        console.log(one);
+        // document.write(str);
+        //         var str = "T_L CTITLE T_D CONTENT T_JT_E likeT_L监管关注T_RT_R1"
+
+        // var one = 1;
+        //         // replace(str|re,str|fn);
+        //         // new RegExp(key,'g')
+        //         str = str.replace(new RegExp(one,'g'), function(s) {
+        //             // alert(s);  //s 传参的是要替换的字   将这些文字全部替换成*
+        //             var str = "";
+        //             for (var i = 0; i < s.length; i++) {
+        //                 str += "*";
+        //             }
+        //             return str;
+        //         });
+        //         document.write(str);
+
+    })
+
+    // var str = "T_L CTITLE T_D CONTENT T_JT_E likeT_L测试T_RT_R "
+    // /^[\u2E80-\uFE4F]+$/
+    // console.log(str.match(/^[\u2E80-\uFE4F]+$/));
+    </script>
+</head>
+
+<body>
+    <div class="hotWrod">热词推荐: <span><a>监管关注</a></span> <span><a>分红</a></span> <span><a>年报</a></span> <span><a>一季报</a></span> <span><a>首次公开发行</a></span></div>
+</body>
+
+</html>

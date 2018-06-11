@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <!-- <meta name="apple-mobile-web-app-capable" content="yes" /> -->
+    <!-- <meta name="apple-mobile-web-app-status-bar-style" content="black" /> -->
+    <title>Document</title>
+    <script src="./js/jquery-1.11.3.min.js"></script>
+    <!-- <link media ="screen and(min-width:768px)" href="./css/one.css" rel="stylesheet"  /> -->
+    <!-- <link media="screen and (min-width:768px)" href="./css/one.css" type="text/css" rel="stylesheet"/>  -->
+    <!-- <link media="screen and (max-width:767px)" href="./css/two.css" type="text/css" rel="stylesheet"/>  -->
+    <!-- <link media ="screen and(max-width:767px)" href="./css/two.css" rel="stylesheet"  /> -->
+    <style>
+
+    </style>
+    <script type="text/javascript">
+    // var a = 2;
+    // (function IIFE(def) {
+    //     def(window);
+    // })(function def(global) {
+    //     var a = 3;
+    //     console.log(a); // 3
+    //     console.log(global.a); // 2
+    // });
+
+    // var foo = true;
+    // if (foo) {
+    //     var bar = foo * 2;
+    //     bar = something(bar);
+    //     console.log(bar);
+    // }
+    // function process(data) {
+    //     alert(data);
+    //     // 在这里做点有趣的事情
+    // }
+    // // 在这个块中定义的内容可以销毁了！ 
+    // {
+    //     let someReallyBigData = {a:1};
+    //     process(someReallyBigData);
+    // }
+    // var btn = document.getElementById("my_button");
+    // btn.addEventListener("click", function click(evt) {
+    //             console.log("button clicked");
+    //         },false );
+    //         
+    //         
+    // {
+    //     let j;
+    //     for(j=0; j<10; j++) {
+    //         let i = j; // 每个迭代重新绑定！
+    //         console.log( i );
+    //     }
+    // }
+    // for(var i=0;i<10;i++){
+    //     console.log(i);
+    // }
+
+    // var foo;
+    // console.log(foo()); // TypeError
+    // console.log(bar()); // ReferenceError
+    // foo = function() {
+    //     var bar = '...self...';
+    // }
+    // 
+    // 
+    // foo();
+    // var a = true;
+    // if (a) {
+    //     function foo() {
+    //         console.log("a");
+    //     }
+    // } else {
+    //     function foo() {
+    //         console.log("b");
+    //     }
+    // }
+
+    // function foo(){
+    //     console.log("1");
+    // }
+    // 
+    // undefined = true; // 给其他代码挖了一个大坑！ 绝对不要这样做！
+    // // var b = 2;
+    // (function IIFE(undefined) {
+    //     var a;
+    //     // console.log(undefined);
+    //     if (a === undefined) {
+    //         console.log("Undefined is safe here!");
+    //     }
+    // })();
+
+
+    // var a = 2;
+
+    // function IIFE() {
+    //     var a;
+    //     console.log(a);
+    // }
+
+    // (function IIFE() {
+    //     var c = 3;
+    //     // var a;
+    //     console.log(a);
+    // })();
+    // IIFE();
+    // console.log(c);
+    // 
+
+    // for (var i = 1; i <= 5; i++) {
+    //     setTimeout(
+    //         function timer() {
+    //             console.log(i);
+    //         }, i * 1000);
+    // }
+    function CoolModule() {
+        var something = "cool";
+
+        var another = [1, 2, 3];
+
+        function doSomething() {
+            console.log(something);
+        }
+
+        function doAnother() {
+            console.log(another.join(" ! "));
+        }
+        return {
+            doSomething: doSomething,
+            doAnother: doAnother
+        };
+    }
+    var foo = CoolModule();
+    foo.doSomething(); // cool
+    foo.doAnother(); // 1 ! 2 ! 3
+    </script>
+</head>
+
+<body>
+    <div id="my_button">one</div>
+</body>
+
+</html>

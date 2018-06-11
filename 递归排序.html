@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        var newArry = [2, 6, 5, 2, 4, 8, 0, 9];
+        console.log(quickSort(newArry));
+
+        function quickSort(arr) {
+            if (arr.length <= 1) {
+                return arr;
+            }
+            var pivotIndex = Math.floor(arr.length / 2),
+                pivot = arr.splice(pivotIndex, 1)[0];
+
+            var left = [],
+                right = [];
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i] <= pivot) {
+                    left.push(arr[i]);
+                } else {
+                    right.push(arr[i]);
+                }
+            }
+            return quickSort(left).concat([pivot], quickSort(right));
+        }
+    };
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+
+    </style>
+    <style>
+        .box{
+            width:200px;
+            height:200px;
+            background: red;
+        }
+    </style>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        function anotherFunction() { /*..*/ }
+        var anotherObject = { 
+            c: true
+        };
+        var anotherArray = [];
+        var myObject = { 
+            a: 2,
+            b: anotherObject, // 引用，不是复本！
+            c: anotherArray, // 另一个引用！
+            d: anotherFunction
+        };
+        //字符串变json;
+        var one = '{one:1,two:2}'
+        var newObj = JSON.parse( JSON.stringify( one ) );
+        anotherArray.push( anotherObject, myObject );
+
+        // console.log(anotherArray);
+        var newObj = Object.assign( {}, myObject );
+            newObj.a; // 2
+            newObj.b === anotherObject; // true 
+            newObj.c === anotherArray; // true 
+            newObj.d === anotherFunction; // true
+    </script>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>

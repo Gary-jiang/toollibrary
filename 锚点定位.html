@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>锚点定位</title>
+    <style>
+        .box{
+            position:relative;
+        }
+       div{
+            height: 200px;
+            width: 200px;
+            border: 1px solid red;
+            margin-bottom: 30px;
+        }
+        .btn{
+            position: fixed;
+            right: 20%;
+            border:none;
+        }
+        a{
+
+                display: block;
+                width: 80px;
+                height: 30px;
+                padding: 5px 10px;
+                background: #fff;
+                border: 1px solid #ddd;
+                color: #333;
+                font-size: 12px;
+                line-height: 20px;
+                text-decoration: none;
+                text-align: center;
+                margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var oBox = document.getElementById('box');
+            var aDiv = oBox.getElementsByTagName('div');
+            var oBtn = document.getElementById('btn');
+            var aA = oBtn.getElementsByTagName('a');
+            for(var i=0;i<aA.length;i++){
+                aA[i].index = i;
+                aA[i].onclick=function(){
+                    alert(aDiv[this.index].offsetTop +"||"+);
+
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="box" id="box">
+        <div id="one">one</div>
+        <div id="two">two</div>
+        <div id="three">three</div>
+        <div id="four">four</div>
+        <div id="five">five</div>
+    </div>
+     <div class="btn" id="btn">
+         <a href="javascript:;">1</a>
+        <br />
+        <a href="javascript:;">2</a>
+        <br />
+        <a href="javascript:;">3</a>
+        <br />
+        <a href="javascript:;">4</a>
+        <br />
+        <a href="javascript:;">5</a>
+        <br />
+     </div>
+
+
+</body>
+</html>

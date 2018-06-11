@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+
+    </style>
+    <style>
+
+    </style>
+    <!-- <script src="js/jquery.min.js"></script> -->
+    <script>
+    window.onload = function(){
+        
+
+        function foo(something) { 
+            console.log( this.a, something ); 
+        return this.a + something;
+        }
+        var obj = { 
+            a:2
+        };
+        var bar = function() {
+        return foo.apply( obj, arguments );
+        };
+        var b = bar( 3 ); // 2 3
+        console.log( b ); // 5
+    }
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

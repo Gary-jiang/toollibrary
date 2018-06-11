@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+
+    </style>
+    <style>
+
+    </style>
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+    // 弹幕数据
+    var dataBarrage = [{
+        value: 'speed设为0为非滚动',
+        time: 1, // 单位秒
+        speed: 0
+    }, {
+        value: 'time控制弹幕时间，单位秒',
+        color: 'blue',
+        time: 2
+    }, ...];
+
+    /*!
+     ** by zhangxinxu(.com)
+     ** 与HTML5 video视频真实交互的弹幕效果
+     ** http://www.zhangxinxu.com/wordpress/?p=6386
+     ** MIT License
+     ** 保留版权申明
+     */
+    var CanvasBarrage = function(canvas, video, options) {
+        if (!canvas || !video) {
+            return;
+        }
+        var defaults = {
+            opacity: 100,
+            fontSize: 24,
+            speed: 2,
+            range: [0, 1],
+            color: 'white',
+            data: []
+        };
+
+        // ... 其它参见页面源代码
+    }
+
+    // 初始化弹幕方法
+    var eleCanvas = document.getElementById('canvasBarrage');
+    var eleVideo = document.getElementById('videoBarrage');
+
+    var demoBarrage = new CanvasBarrage(eleCanvas, eleVideo, {
+        data: dataBarrage
+    });
+    </script>
+</head>
+
+<body>
+    <canvas id="canvasBarrage"></canvas>
+    <video id="videoBarrage" width="640" height="384" src="./video.mp4" controls></video>
+</body>
+
+</html>

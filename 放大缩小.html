@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+
+    </style>
+    <style>
+    .box {
+        /*      width: 200px;
+        height: 200px;
+        background: red;
+        position: absolute;
+        left:0;
+        top: 0; */
+    }
+    </style>
+    <script src="js/jquery.min.js"></script>
+    <script>
+    $(function() {
+        var $comment = $('#comment');
+        $('.bigger').click(function(event) {
+            if (! $comment.is(':animated')) {
+                if ($comment.height() < 500) {
+                    // $comment.height($comment.height() + 50);
+                    $comment.animate({
+                        height: "+=50"
+                    }, 400);
+                }
+            }
+
+        });
+        $('.smaller').click(function(event) {
+            if (! $comment.is(':animated')) {
+                if ($comment.height() > 50) {
+                    // $comment.height($comment.height() - 50);
+                    $comment.animate({
+                        height: "-=50"
+                    }, 400);
+
+                }
+            }
+
+        });
+
+    })
+    </script>
+</head>
+
+<body>
+    <form>
+        <div class="msg">
+            <div class="msg_caption">
+                <span class="bigger">big</span>
+                <span class="smaller">small</span>
+            </div>
+            <div>
+                <textarea id="comment" rows="8" cols="20">
+                    如图所示，ul和下面两个div标签都不能与上文成功匹配，不知道是不是软件自身的原因还是这个插件的bug，代码在webstorm看过了，也没什么问题，浏览器解析也没问题（反正也能自动补全），就是sublime这里有几个提示，表示不解如图所示，ul和下面两个div标签都不能与上文成功匹配，不知道是不是软件自身的原因还是这个插件的bug，代码在webstorm看过了，也没什么问题，浏览器解析也没问题（反正也能自动补全），就是sublime这里有几个提示，表示不解
+                </textarea>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>

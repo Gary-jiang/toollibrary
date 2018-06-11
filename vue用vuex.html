@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <!-- <script src="js/jquery.min.js"></script> -->
+    <!-- <script src="js/layerui.js"></script> -->
+    <!-- <script src="js/laypage.js"></script> -->
+
+</head>
+
+<body>
+    <div id="app">
+        {{count}}
+        <my-addbtn :count='count'></my-addbtn>
+        <my-removebtn :count='count'></my-removebtn>
+    </div>
+    <script>
+        var busVM = new Vue();
+        var my = new Vue({
+            el: "#app",
+            data:{
+                count:0
+            },
+            mounted:function(){
+                busVM.$on('changeEvents',function(num){
+                    this.count = num;
+                }.bind(this));
+            },
+            components:{
+                'my-addbtn':{
+                    template:'<button @click="setCount">+</button>',
+                    props:['count'],
+                    methods:{
+                        setCount:function(){
+                            busVM.$emit('changeEvents',this.count+1);
+                        }
+                    }
+                },
+                'my-removebtn':{
+                    template:'<button @click="setCount">-</button>',
+                    props:['count'],
+                    methods:{
+                        setCount:function(){
+                            busVM.$emit('changeEvents',this.count-1);
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

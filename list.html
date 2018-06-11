@@ -1,0 +1,185 @@
+<h2>添加爆料</h2>
+<!--爆料表单开始 -->
+<div class="ugc_gj_ysp ugc_onmargin">
+	<form id="brokeFrm" style="height: 100%;">
+		<input type="hidden" id="articleType" name="articleType" value="1" />
+		<input type="hidden" id="articleContent" name="articleContent" value="" />
+		<input type="hidden" id="qiniuIds" name="qiniuIds" value="" />
+		<input type="hidden" id="pictureIds" name="pictureIds" value="" />
+		<textarea name="editorValue" id="editorValue" style="width: 99.8%;height: 100%;"></textarea>
+	</form>
+</div>
+<input type="button" value="发布" class="ugc_gj_yspfb fr ugc_onwidth" onclick="layui.saveBtn()"/>
+<!--爆料表单结束 -->
+<!-- 上传部分开始 -->
+<div class="ugc_gj_yslist ugc_onright layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+	<ul class="fl layui-tab-title">
+		<li class="ugc_gj_picture" onclick="layui.pictureBtn(0,0)"><a href="javascript:;" >图片</a></li>
+		<li class="ugc_gj_avi" onclick="layui.pictureBtn(2,3)"><a href="javascript:;" >视频</a></li>
+		<li class="ugc_gj_audio" onclick="layui.pictureBtn(2,2)"><a href="javascript:;" >音频</a></li>
+	</ul>
+</div>
+<!-- 嵌入七牛iframe开始 -->
+<iframe id="child" src="../web/article/uploadVideo.do" style="display: none" ></iframe>
+<!-- 嵌入七牛iframe结束 -->
+<!-- 上传图片显示区开始 -->
+<div  style="display:none;" id="picture">
+	<div style="display:none;">
+   		<input type="file" name="file" class="layui-upload-file" id="uploadPicBtn"/> 
+   	</div> 
+    <div class="ugc_bl_tpsc" id="js_picture_append">
+        <div class="ugc_bl_picture ugc_bl_add">
+            <a href="javascript:;" onclick="layui.addImageBtn()"><img src="images/add.png"/></a>
+        </div>
+    </div>
+   
+</div>
+<!-- 上传图片显示区结束 -->
+<!-- 上传视频显示区开始 -->
+<div class="ugc_gj_sc" id="video" style="display:none;">
+    <!-- <h2><a href="javascript:;" id="js_add_video">上传视频</a></h2> -->
+    <div class="ugc_bl_tpsc" id="js_add_video">
+        <div class="ugc_bl_picture ugc_bl_add">
+            <a href="javascript:;"><img src="images/add.png"/></a>
+        </div>
+    </div>
+    <div class="layui-progress layui-progress-big" id="js_video_process"  lay-filter="js_process_filter" lay-showPercent="true" style="width:100%;display:none;" >
+		<div class="layui-progress-bar layui-bg-cyan" lay-percent=""></div>
+	</div>
+	<div class="ugc_sc_splist" id="js_video_append"></div>
+</div>
+<!-- 上传视频显示区结束-->
+<!-- 上传音频显示区开始-->
+ <div class="ugc_gj_sc" style="display:none;" id="audio">
+    <!-- <h2><a href="javascript:;" id="js_add_audio">上传音频</a></h2> -->
+    <div class="ugc_bl_tpsc" id="js_add_audio">
+        <div class="ugc_bl_picture ugc_bl_add">
+            <a href="javascript:;"><img src="images/add.png"/></a>
+        </div>
+    </div>
+    <div class="layui-progress layui-progress-big" id="js_audio_process"  lay-filter="js_process_filter" lay-showPercent="true" style="width:100%;display:none;" >
+		<div class="layui-progress-bar layui-bg-cyan"  lay-percent=""></div>
+	</div>
+	<div class="ugc_yp_list" id="js_audio_append"></div>
+</div>
+<!-- 上传音频显示区结束 -->
+<!-- 上传部分结束 -->
+<!-- 筛选开始 -->
+<div class="ugc_ytg_search ugc_ontop ">
+	 <div class="ugc_search_time layui-form">
+         <select name="" class="ugc_ytg_search_list" lay-filter="timeFilter">
+			<option value="all">全部时间</option>
+			<option value="oneday">最近一天</option>
+			<option value="threeday">最近三天</option>
+			<option value="onemonth">近一个月</option>
+		</select>
+     </div>
+     <ul class="fr">
+         <li>
+             <input type="text" name="searchWord" id="searchWord"  placeholder="请输入关键词搜索"  class="ugc_ytg_search_ss">
+         </li>
+         <li>
+             <input type="button" name=""  onclick="layui.broke();" value="搜索" class="ugc_ytg_search_button">
+         </li>
+     </ul>
+</div>
+<!-- 筛选结束 -->
+<!-- 列表开始 -->
+<div class="ugc_bl_content" id="broke_list">
+</div>
+<!-- 列表结束 -->
+<!-- 刷新置顶按钮开始 -->
+<div class="ugc_slderbar">
+    <ul>
+        <li>
+            <a href="javascript:scrollTo(0,0);" id="top"><img src="images/slidertop.png" width="87" height="86" /></a>
+        </li>
+        <li>
+            <a href="javascript:;" onclick="layui.broke();"><img src="images/sx.png" width="87" height="86" /></a>
+        </li>
+    </ul>
+</div>
+<!-- 刷新置顶按钮结束 -->
+<input type="hidden" id="id" name="id" value="" />
+<input type="hidden" id="type" name="type" value="" />
+<input type="hidden" id="fileType" name="fileType" value="" />
+<input type="hidden" id="searchTime" name="searchTime" value="" />
+<script src="article/broke/js/broke.js"></script>
+<script id="broke_list_tpl" type="text/html">
+{{#
+	if(d.data && d.data.ldata && d.data.ldata.length > 0){
+		for(var i = 0; i < d.data.ldata.length; i++){
+			var data = d.data.ldata[i];
+			var appendixMap = d.appendixMap[data.id];
+}}
+	<div class="ugc_bl_content_nr">
+		<p style="word-wrap:break-word;">{{layui.utils.htmlEncode(data.articleHtmlCon)}}</p>
+		{{#
+			if(appendixMap && appendixMap.length > 0){
+				var fileType = appendixMap[0].fileType;
+		}}
+			{{#
+				if(fileType == 0){
+			}}
+			<ul class="imageList">
+			{{#
+				for(var j in appendixMap){
+					var appendixInfo =  appendixMap[j];
+					var path;
+					if(appendixInfo.thumFilePath!=null){
+						path = layui.upload_path+appendixInfo.thumFilePath;
+					}else{
+						path = layui.upload_path+appendixInfo.filePath;
+					}
+			}}
+				<li><img alt="{{appendixInfo.srcfile || ''}}" src="{{path}}" layer-src="{{layui.upload_path+appendixInfo.filePath}}"/></li>
+			{{#
+				}
+			}}
+			</ul>
+			{{#
+				}
+			}}
+			{{#
+				if(fileType == 3){
+			}}
+			{{#
+				for(var j in appendixMap){
+					var appendixInfo =  appendixMap[j];
+			}}
+				<p class="ugc_oncenter" id="{{data.id}}">
+					
+				</p>
+			{{#
+				}
+			}}
+			{{#
+				}
+			}}
+			{{#
+				if(fileType == 2){
+			}}
+			{{#
+				for(var j in appendixMap){
+					var appendixInfo =  appendixMap[j];
+			}}
+				<p class="ugc_oncenter" id="{{data.id}}" >
+					
+        		</p>
+			{{#
+				}
+			}}
+			{{#
+				}
+			}}
+		{{#
+			}
+		}}
+		<span>{{layui.utils.date(data.crTime).substring(0, 20)}}</span>
+	</div>
+		<hr>
+{{#
+	}
+		}
+}}
+</script>

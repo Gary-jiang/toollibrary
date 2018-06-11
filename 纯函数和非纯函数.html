@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+   
+    </style>
+    <style>
+
+    </style>
+    <!-- <script src="js/jquery.min.js"></script> -->
+    <script>
+    window.onload = function(){
+        // 非纯函数
+        // 这个函数被调用时传入了mouseX，但没有传入window.innerWidth。这意味着该函数访问了一个不是作为参数传入的变量，因此它不是纯函数。
+        function mouseOnLeftSide(mouseX) {
+            return mouseX < window.innerWidth / 2;
+        }
+         
+        document.onmousemove = function(e) {
+            console.log(mouseOnLeftSide(e.pageX));
+        };
+        // 纯函数
+        function mouseOnLeftSide(mouseX, windowWidth) {
+            return mouseX < windowWidth / 2;
+        }
+         
+        document.onmousemove = function(e) {
+            console.log(mouseOnLeftSide(e.pageX, window.innerWidth));
+        };
+    };
+    
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

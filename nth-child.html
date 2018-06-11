@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+    li {
+        list-style-type: none;
+    }
+    
+    ul {
+        width: 300px;
+        overflow: hidden;
+    }
+    
+    ul:before {
+        content: "";
+        position: absolute;
+        width: 2px;
+        height: 82%;
+        background: #f84c4c;
+        left: 50%;
+    }
+    /* ul:after {
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 10px;
+        background-color: white;
+        left: 50%;
+        top: 50px;
+        margin-left: -8px;
+        border: 4px solid #f84c4c;
+    }*/
+    
+    ul li:nth-child(even) {
+        float: right;
+        height: 50px;
+    }
+    
+    ul li:nth-child(odd) {
+        float: left;
+        height: 50px;
+    }
+    
+    ul li {
+        width: 51%;
+    }
+    
+    ul li:nth-child(1):after,
+    ul li:nth-child(2):after,
+    ul li:nth-child(3):after,
+    ul li:nth-child(4):after,
+    ul li:nth-child(5):after,
+    ul li:nth-child(6):after,
+    ul li:nth-child(7):after,
+    ul li:nth-child(8):after,
+    ul li:nth-child(9):after {
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 10px;
+        background-color: white;
+        left: 50%;
+        margin-left: -8px;
+        border: 4px solid #f84c4c;
+    }
+    
+    ul li:nth-child(1):after {
+        top: 50px;
+    }
+    
+    ul li:nth-child(2):after {
+        top: 100px;
+    }
+    
+    ul li:nth-child(3):after {
+        top: 150px;
+    }
+    
+    ul li:nth-child(4):after {
+        top: 200px;
+    }
+    
+    ul li:nth-child(5):after {
+        top: 250px;
+    }
+    
+    ul li:nth-child(6):after {
+        top: 300px;
+    }
+    
+    ul li:nth-child(7):after {
+        top: 350px;
+    }
+    
+    ul li:nth-child(8):after {
+        top: 400px;
+    }
+    
+    ul li:nth-child(9):after {
+        top: 450px;
+    }
+    </style>
+    <script src="js/jquery.min.js"></script>
+    <script>
+    $(function() {
+
+    });
+    </script>
+</head>
+
+<body>
+    <ul>
+        <li class="lct_gray_gray" id="ipo_notice_li">
+            <p>招股公告</p>
+            <span id="ipo_notice_span">2016-12-19</span>
+        </li>
+        <li class="lct_gray_gray" id="inquiry_li">
+            <p>询价</p>
+            <span id="inquiry_span">-</span>
+        </li>
+        <li class="lct_gray_gray" id="roadshow_li">
+            <p>路演</p>
+            <span id="roadshow_span">2017-01-09</span>
+        </li>
+        <li class="lct_gray_gray" id="issuance_announcement_li">
+            <p>发行公告</p>
+            <span id="issuance_announcement_span">2017-01-09</span>
+        </li>
+        <li class="lct_gray_gray" id="online_issuance_li">
+            <p>申购</p>
+            <span id="online_issuance_span">2017-01-10</span>
+        </li>
+        <li class="lct_gray_gray" id="announce_success_rate_li">
+            <p>公布中签率</p>
+            <span id="announce_success_rate_span">2017-01-11</span>
+        </li>
+        <li class="lct_gray_gray" id="announce_success_rate_result_li">
+            <p>发布中签号码</p>
+            <span id="announce_success_rate_result_span">2017-01-12</span>
+        </li>
+        <li class="lct_gray_gray" id="PAYMENT_END_DATE_li">
+            <p>缴款日</p>
+            <span id="PAYMENT_END_DATE">2017-01-12</span>
+        </li>
+        <li class="lct_gray_white" id="listed_li">
+            <p>上市</p>
+            <span id="listed_span">-</span>
+        </li>
+    </ul>
+</body>
+
+</html>

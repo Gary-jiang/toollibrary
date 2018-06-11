@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+
+    </style>
+    <style>
+
+    </style>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        function anotherFunction() { /*..*/ }
+        var anotherObject = { 
+            c: true
+        };
+        var anotherArray = [];
+        var myObject = { 
+            a: 2,
+            b: anotherObject, // 引用，不是复本！
+            c: anotherArray, // 另一个引用！
+            d: anotherFunction
+        };
+
+        var newObj = Object.assign({},myObject);
+        var array = [1,2,22,3,33];
+        var newArr = Object.assign([],array); 
+
+        console.log(newArr);
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

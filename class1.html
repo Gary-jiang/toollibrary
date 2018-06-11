@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+   
+    </style>
+    <style>
+
+    </style>
+    <script src="js/jquery.min.js" name="one"></script>
+    <script>
+    $(function(){
+          function loadScript(url) {
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = url;
+            document.body.appendChild(script);
+        }
+        /* 判断IE老版本还是新浏览器 */
+        var isIE = document.all && !window.atob;
+        if (isIE) {
+            loadScript("${res_root}js/swiper.min.js");
+        }else{
+            loadScript("${res_root}js/idangerous.swiper.old.min.js");
+        }
+    })
+  
+    </script>
+</head>
+
+<body>
+    <div class="one" id="box"></div>
+
+</body>
+
+</html>

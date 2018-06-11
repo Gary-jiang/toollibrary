@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>锚点定位</title>
+    <style>
+        .box{
+            position:relative;
+        }
+       div{
+            height: 600px;
+            width: 200px;
+            border: 1px solid red;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .btn{
+            position: fixed;
+            right: 20%;
+            top: 1%;
+            border:none;
+        }
+        a{
+            display: block;
+            width: 80px;
+            height: 30px;
+            padding: 5px 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+            color: #333;
+            font-size: 12px;
+            line-height: 20px;
+            text-decoration: none;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script src="./js/jquery-1.11.3.min.js"></script>
+    <script>
+        window.onload = function(){
+            var oBox = document.getElementById('box');
+            var aDiv = oBox.getElementsByTagName('div');
+            var oBtn = document.getElementById('btn');
+            var aA = oBtn.getElementsByTagName('a');
+            for(var i=0;i<aA.length;i++){
+                aA[i].index = i;
+                aA[i].onclick=function(){
+                    var one = aDiv[this.index].offsetTop;
+                    $('html,body').animate({scrollTop: one}, 500);
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="box" id="box">
+        <div id="one">one</div>
+        <div id="two">two</div>
+        <div id="three">three</div>
+        <div id="four">four</div>
+        <div id="five">five</div>
+    </div>
+     <div class="btn" id="btn">
+<!--          <a href="#one">1</a>
+        <br />
+        <a href="#two">2</a>
+        <br />
+        <a href="#three">3</a>
+        <br />
+        <a href="#four">4</a>
+        <br />
+        <a href="#five">5</a> -->
+        <br /> <a href="JavaScript:;">1</a>
+        <br />
+        <a href="JavaScript:;">2</a>
+        <br />
+        <a href="JavaScript:;">3</a>
+        <br />
+        <a href="JavaScript:;">4</a>
+        <br />
+        <a href="JavaScript:;">5</a>
+        <br />
+     </div>
+
+
+</body>
+</html>

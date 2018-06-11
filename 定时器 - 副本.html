@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+
+    </style>
+    <style>
+        .box{
+            width:200px;
+            height:200px;
+            background: red;
+        }
+    </style>
+    <script src="js/jquery.min.js"></script>
+    <script>
+    $(function(){
+            var timer = null;
+            function on(){
+                alert('5 seconds!')
+            }
+            $('.box').mouseover(function(event) {
+                timer = setTimeout(on,500);
+            });
+            $('.box').mouseout(function(){
+               clearTimeout(timer);
+            })
+    })
+
+            // timer = setTimeout("alert('5 seconds!')",500);
+        
+    </script>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>

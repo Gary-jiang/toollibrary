@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title></title>
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <meta name="author" content="Li.chen" />
+        <link rel="stylesheet" type="text/css" href="" />
+        <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    </head>
+    <body>
+		<h1></h1>
+        <script type="text/javascript">
+            $(function(){
+                $.ajax({
+                    url:"http://10.10.10.28:9080/sseQuery/commonSoaQuery.do",
+                    type:"POST",
+                    dataType: "jsonp",
+                    jsonp: "jsonCallBack",
+                    data:{
+                        token:"QUERY",
+                        sqlId:"JYGKXX_ZL",
+                        tradeDate:20161201,
+                        order:"secTxVolume|desc"
+                    },
+                    cache : false,
+                    success: function(json) {
+                        var objMap = {};
+                        var obj = json.result;
+                        $.each(obj,function(idx,item){
+                            var rType = item.refType.trim();
+                            var sType = item.secType.trim();
+                            if (sType != "" && sType.length != 0) {
+                                if (objMap[rType] != null) {
+                                    objMap[rType] += sType + ",B,";
+                                }else{
+                                    objMap[rType] = sType + ",";
+                                }
+                            }
+                        })
+                        // console.log(objMap);
+
+                        /*一*/
+                        // var newJson = {};
+                        // var nubA = 0,
+                        //     nubB = 0,
+                        //     nubK = 0;
+                        // $.each(objMap,function(idx,item){
+                        //     var one = item.split(',');
+                        //     for(var i=0;i<one.length;i++){
+                        //         if(one[i] == 'A'){
+                        //             nubA++;
+                        //         }else if(one[i] == 'B'){
+                        //             nubB++;
+                        //         }else{
+                        //             nubK++;
+                        //         }
+                        //     }
+                        //     newJson[idx] = {'A':nubA,'B':nubB,'':nubK};
+                        //     nubA = 0,
+                        //     nubB = 0,
+                        //     nubK = 0;
+                        // })
+                        // console.log(newJson);
+                    }
+                });
+            })
+        </script>
+    </body>
+</html>
